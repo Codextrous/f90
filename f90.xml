@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="library" method="upgrade">
+	<name>lib_f90</name>
+	<libraryname>f90</libraryname>
+	<description>LIB_F90_XML_DESCRIPTION</description>
+	<creationDate>2015-2021</creationDate>
+	<author>Gaurav</author>
+	<authorEmail>gaurav.jain028@gmail.com</authorEmail>
+	<authorUrl>https://www.function90.com</authorUrl>
+	<license>GNU/GPL Version 2 or later - http://www.gnu.org/licenses/gpl-2.0.html</license>
+	<version>1.0</version>
+	<packagerurl>https://www.function90.com</packagerurl>
+	<namespace path="src">F90</namespace>
+
+	<files folder="libraries">
+		<folder>src</folder>
+	</files>
+</extension>
