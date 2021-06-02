@@ -2,7 +2,7 @@
 
 /**
  * @package     Joomla.Library
- * @subpackage  F90
+ * @subpackage  lib_f90
  *
  * @copyright   Copyright (C) 2015 - 2021 Function90. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -24,7 +24,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
  *
  * @since  2.0
  */
-class BaseHtmlView extends JBaseHtmlView
+abstract class BaseHtmlView extends JBaseHtmlView
 {
     /**
      * An array of items
@@ -60,6 +60,19 @@ class BaseHtmlView extends JBaseHtmlView
      * @var  array
      */
     public $activeFilters;
+
+    /**
+     * Set Page Title
+     */
+    public abstract function getComponentName(): string;
+
+    /**
+     * Set Page Title
+     */
+    public function getContext()
+    {
+        return 'COM_' . strtoupper($this->getComponentName()) . '_' . strtoupper($this->getName());
+    }
 
     /**
      * Display the view.
@@ -98,9 +111,9 @@ class BaseHtmlView extends JBaseHtmlView
         // Get the toolbar object instance
         $toolbar = Toolbar::getInstance('toolbar');
 
-        ToolbarHelper::title(Text::_('COM_JOOMPROFILE_FIELDS_PAGE_TITLE'), 'joomprofile');
+        ToolbarHelper::title(Text::_($this->getContext() . '_PAGE_TITLE'), $this->getComponentName());
 
-        $canDo = ContentHelper::getActions('com_joomprofile');
+        $canDo = ContentHelper::getActions('com_' . $this->getComponentName());
 
         if ($canDo->get('core.create')) {
             $toolbar->addNew('field.add');
