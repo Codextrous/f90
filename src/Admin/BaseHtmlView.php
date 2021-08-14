@@ -12,6 +12,7 @@ namespace F90\Admin;
 
 defined('_JEXEC') or die;
 
+use F90\Interfaces\AdminHtmlViewInterface;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
@@ -24,7 +25,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
  *
  * @since  2.0
  */
-abstract class BaseHtmlView extends JBaseHtmlView
+abstract class BaseHtmlView extends JBaseHtmlView implements AdminHtmlViewInterface
 {
     /**
      * An array of items
@@ -60,11 +61,6 @@ abstract class BaseHtmlView extends JBaseHtmlView
      * @var  array
      */
     public $activeFilters;
-
-    /**
-     * Set Page Title
-     */
-    public abstract function getComponentName(): string;
 
     /**
      * Set Page Title
